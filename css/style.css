@@ -1,0 +1,22 @@
+/* GENERALI */
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.black{
+    background-color: black;
+}
+
+
+/* MAIN */
+.box{
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    background-color: pink;
+}
+#number-container .none{
+    display: none;
+}
