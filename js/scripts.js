@@ -32,10 +32,10 @@ for (let i=0; i<5; i++){
 // Faccio scomparire i numeri
 setTimeout(function() {
     numberContainer.classList.add('none');
-}, 5000);
+}, 30000);
 
 // Imposto il timer di 30 secondi
-let timer = 2;
+let timer = 30;
 const countdown = setInterval(function () {
 
     if (timer == 0) {
