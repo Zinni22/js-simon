@@ -11,35 +11,53 @@
 const numberContainer = document.getElementById('number-container');
 console.log(numberContainer);
 
-const newDiv = document.createElement('div');
+const numeri=[];
 
 //faccio comparire 5 numeri random
-for (let i=0; i <5; i++){
+for (let i=0; i<5; i++){
 
-   let numeri = (Math.random(5)*100).toFixed(0);
-   console.log('Numero random:', numeri);
+   const numeriRandom = getRandomNumber(1,99);
+   console.log('Numero random:', numeriRandom);
+
+   numeri.push(numeriRandom);
 
    // creo i div e li do una classe
-    const newDiv = document.createElement('div');
-    console.log(newDiv);
+   const newDiv = document.createElement('div');
     numberContainer.append(newDiv);
-    newDiv.innerHTML = numeri;
+    newDiv.innerHTML = numeriRandom;
     newDiv.classList.add('box');
-}
+};
 
+
+// Faccio scomparire i numeri
+setTimeout(function() {
+    numberContainer.classList.add('none');
+}, 5000);
 
 // Imposto il timer di 30 secondi
-let timer = 5;
-
+let timer = 2;
 const countdown = setInterval(function () {
 
     if (timer == 0) {
         clearInterval(countdown);
         console.log('é finito il tempo');
 
-        prompt('Inserisci i numeri visualizzati prima in pagina');
+        const guessedNumbers = [];
 
-        newDiv.classList.add('none');
+        for (let i=0; i<5; i++){
+            const userInput = prompt('Inserisci un numero');
+            console.log('il numero inserito è', userInput);
+
+            if(userInput == numeri[i]){
+                console.log('è uguale');
+                guessedNumbers.push(numeri[i]);
+            }
+        };
+
+        const results = document.getElementById('risposta');
+        results.innerHTML = 'Hai indovinato: ' + guessedNumbers.length + ' numeri!!<br>';
+        results.innerHTML += guessedNumbers;
+        console.log(guessedNumbers);
 
     }
     else {
@@ -48,3 +66,9 @@ const countdown = setInterval(function () {
     }
     
 }, 1000);
+
+
+// funzione numeri generali
+function getRandomNumber(min, max){
+    return Math.floor(Math.random()* (max - min + 1) + min);
+}
